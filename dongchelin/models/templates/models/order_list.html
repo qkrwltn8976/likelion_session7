@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% for item in orders %}
+<div class="grid-item">
+    <figure class="effect-sadie"> 
+    	  <a href="{% url 'show_order' item.id %}"><img src="{% static 'img/receipt.png' %}" alt="Image" class="img-fluid tm-img"></a>
+	        <span>
+	          <span>
+	            <h2 class="tm-figure-title">{{item.restaurant.name}}<br><b>{{item.total_price}}원</b></h2>
+	          </span>
+	        </span>
+    </figure>
+</div>
+{% endfor %}
+{% endblock %}

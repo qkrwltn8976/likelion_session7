@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<h2 class="tm-contact-info">주문내역</h2>
+	  <div>가게명: {{order.restaurant.name}}</div>
+	  <p>================================</p>
+      <div>{{order.detail|linebreaks}}</div>
+      <p>================================</p>
+      <div>금액 : {{order.total_price}}원</div>
+</div>
+{% endblock %}

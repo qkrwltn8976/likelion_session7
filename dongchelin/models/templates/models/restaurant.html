@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+{% for item in restaurant.foods.all %}
+<div class="grid-item" style="width: 250px; height: 200px;">
+    <figure class="effect-sadie"> 
+    	  <img src="{{item.image.url}}" alt="Image" width="180" height="120" class="img-fluid tm-img" href="{% url 'restaurant' item.id %}">
+	        <figcaption>
+	            <h2 class="tm-figure-title white-text"><b>{{item.name}}</b><br><b>{{item.price}}원</b></h2>
+	        </figcaption>
+    </figure>
+    </div>
+{% endfor %} 
+</div>
+
+<div class="tm-bg-white-translucent text-xs-left tm-textbox tm-2-col-textbox-2 tm-textbox-padding tm-textbox-padding-contact">
+	 <div class="tm-social-icons-container text-xs-center">
+    <h2 class="tm-contact-info">주문서</h2><br>
+                                                    
+    
+    <!-- contact form -->
+    <form action="{% url 'make_order' restaurant.id %}" method="post" class="tm-contact-form">
+    {% csrf_token %}
+    {% for item in restaurant.foods.all %}
+   
+	<div class="grid-item" style="width: 250px; height: 150px;">
+        <h2 class="tm-figure-title white-text"><b>{{item.name}}</b></h2>
+		<input type="number" name={{item.name}} min=0 value=0>
+	 </div>
+    {% endfor %}<br>
+    <button type="submit" class="pull-xs-right tm-submit-btn">주문</button>  
+    </form> 
+       </div> 
+</div>
+
+</div>
+
+{% endblock %}
