@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% for item in favo %}
+<div class="grid-item">
+    <figure class="effect-sadie"> 
+    	  <img src="{% static 'img/star_2.png' %}" alt="Image" class="img-fluid tm-img">
+	        <span>
+	          <span>
+	            <h2 class="tm-figure-title">{{item.name}}</h2>
+	          </span>
+	        </span>
+    </figure>
+</div>
+{% endfor %}
+{% endblock %}

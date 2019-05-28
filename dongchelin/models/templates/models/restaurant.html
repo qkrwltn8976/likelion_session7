@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-
+{% load define_action %}
+ <form action="{% url 'favo' restaurant.id %}" method="POST">	
+ 	<h2 class="tm-figure-title white-text"><b>{{restaurant.name}}</b> 메뉴판</h2>
+	{% csrf_token %} 
+	
+   	<input type="submit" class="pull-xs-center" value="즐겨찾기">
+	<img src="{{star_url}}" alt="Image" width="20pt" height="20pt" >
+	{{ restaurant.favo.count }}
+	
+</form>
 
 {% for item in restaurant.foods.all %}
 <div class="grid-item" style="width: 250px; height: 200px;">
@@ -30,7 +39,7 @@
 		<input type="number" name={{item.name}} min=0 value=0>
 	 </div>
     {% endfor %}<br>
-    <button type="submit" class="pull-xs-right tm-submit-btn">주문</button>  
+    <button type="submit" class="pull-xs-center tm-submit-btn">주문</button>  
     </form> 
        </div> 
 </div>

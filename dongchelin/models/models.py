@@ -6,6 +6,7 @@ class Restaurant(models.Model):
 	objects = models.Manager()
 	name = models.CharField(max_length=100)
 	location = models.CharField(max_length=100)
+	favo = models.ManyToManyField(User, related_name='favo')
 
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
